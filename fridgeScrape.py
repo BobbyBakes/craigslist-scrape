@@ -9,18 +9,15 @@ with requests.session() as s:
     hrefs = tree.xpath('//a[contains(@href, "craig")]/@href')
 
     fridge_tag = '//p[@class="result-info"]/a/text()'
-    total = 0
     for site in hrefs:
         cl_url = f"{site}search/zip?query=fridge"
-        # print(cl_url)
-        # print("###########")
+        print(cl_url)
+        print("###########")
         page = s.get(cl_url)
         tree = html.fromstring(page.content)
         results = tree.xpath(fridge_tag)
         for r in results:
-            total += 1
-            # print(r)
-            # print("----------")
+            print(r)
+            print("----------")
 
 
-    print(f"Total Number of Free Refridgerators: {total}")
